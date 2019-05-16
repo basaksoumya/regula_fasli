@@ -1,0 +1,53 @@
+//********SOUMYADIP BASAK********//
+//IMPLEMENTATION OF REGULA FALSI METHOD//
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+float f(float);
+
+int main()
+{
+  system("color 70");
+  float a,b;
+  printf("enter the value of a  (f(a)<0)=");
+  scanf("%f",&a);
+  printf("\nenter the value of b (f(b)>0)=");
+  scanf("%f",&b);
+  float x1;
+  int i,n;
+  while(1)
+  {
+  printf("\nDo you want to exit?");
+  printf("\n then enter the key 0.if continue then press any key");
+  int e;
+  scanf("%d",&e);
+  if(e==0)
+    exit(0);
+  if(e!=0)
+  {
+  printf("\nhow many times you want to calculate?");
+  scanf("%d",&n);
+  x1=((f(a)*b)-(f(b)*a))/(f(a)-f(b));
+   for(i=2;i<=n;i++)
+   {
+       if(f(x1)>0)
+       {
+           b=x1;
+           x1=((f(a)*b)-(f(b)*a))/(f(a)-f(b));
+       }
+       if(f(x1)<0)
+       {
+           a=x1;
+           x1=((f(a)*b)-(f(b)*a))/(f(a)-f(b));
+       }
+   }
+   printf("\nroot after calculating %d times =%f",n,x1);
+  }
+  }
+}
+
+float f(float x)
+{
+    return (x*x*x*x-32);
+}
